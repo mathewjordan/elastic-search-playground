@@ -1,0 +1,17 @@
+GET /meadow/_search
+{
+  "size" : 10,
+  "query": {
+
+  "query_string": {
+  "query":  "model.name:collection AND (keywords:photography OR keywords:Evanston)"}
+  },
+  "collapse" : {
+    "field" : "keywords.keyword", 
+    "inner_hits": {
+        "name": "collection_results", 
+        "size": 5,
+        "_source": ["title", "keywords", "featured", "representativeImage.url"]
+    }
+  "_source": ["keywords"],
+ }
