@@ -1,0 +1,19 @@
+GET _search
+{
+  "size": 1,
+  "query": {
+    "bool": {
+      "must": [
+        { "match": { "model.name": "Collection" } },
+        { "match": { "keywords": "evanston" } }
+      ]
+    }
+  },
+  "_source": [
+    "descriptiveMetadata",
+    "id",
+    "model",
+    "representativeImage",
+    "title"
+  ]
+}
